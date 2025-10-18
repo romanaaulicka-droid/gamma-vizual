@@ -1,1 +1,167 @@
+<style>
+  .lektor-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 0;
+    font-family: "Inter", sans-serif;
+  }
 
+  .lektor-card {
+    text-align: center;
+    width: 280px;
+  }
+
+  .lektor-thumbnail {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .lektor-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .lektor-detail {
+    display: none;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  .lektor-detail img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .lektor-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #222;
+  }
+
+  .lektor-bio {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .close-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: #222;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .close-btn:hover {
+    background: #444;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .lektor-gallery {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+
+<div class="lektor-gallery">
+
+  <!-- Lektor 1 -->
+  <div class="lektor-card">
+    <img
+      src="https://agentura-aha.cz/upload/authors/5d666a5904164.full.png"
+      alt="Lenka Jedličková"
+      class="lektor-thumbnail"
+      onclick="showDetail(this)"
+    >
+    <div class="lektor-detail">
+      <img src="https://agentura-aha.cz/upload/authors/5d666a5904164.full.png" alt="Lektor detail 1">
+      <div class="lektor-name">Lenka Jedličková</div>
+      <div class="lektor-bio">
+        Lenka je úspěšná v navolávání, řeší nejčastejí telefonování a ukazuje jak se to dělat nemá.
+      </div>
+      <button class="close-btn" onclick="hideDetail(this)">Zavřít</button>
+    </div>
+  </div>
+
+  <!-- Lektor 2 -->
+  <div class="lektor-card">
+    <img
+      src="https://agentura-aha.cz/upload/authors/5d666a5904164.full.png"
+      alt="Filip Lepier"
+      class="lektor-thumbnail"
+      onclick="showDetail(this)"
+    >
+    <div class="lektor-detail">
+      <img src="https://agentura-aha.cz/upload/authors/5d666a5904164.full.png" alt="Lektor detail 2">
+      <div class="lektor-name">Filip Lepier</div>
+      <div class="lektor-bio">
+        Petra se zaměřuje na rozvoj prezentačních dovedností a osobní
+        komunikace. Její přístup je energický, autentický a podporuje
+        sebejistotu účastníků.
+      </div>
+      <button class="close-btn" onclick="hideDetail(this)">Zavřít</button>
+    </div>
+  </div>
+
+  <!-- Lektor 3 -->
+  <div class="lektor-card">
+    <img
+      src="https://agentura-aha.cz/upload/authors/5d666a5904164.full.png"
+      alt="Lektor 3"
+      class="lektor-thumbnail"
+      onclick="showDetail(this)"
+    >
+    <div class="lektor-detail">
+      <img src="https://agentura-aha.cz/upload/authors/5d666a5904164.full.png" alt="Lektor detail 3">
+      <div class="lektor-name">Martin Dvořák</div>
+      <div class="lektor-bio">
+        Martin přináší do rozvoje týmů zkušenosti z korporátní praxe.
+        Témata jako motivace, leadership a koučovací přístup propojuje
+        s konkrétními nástroji do každodenní reality.
+      </div>
+      <button class="close-btn" onclick="hideDetail(this)">Zavřít</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showDetail(el) {
+    const card = el.closest(".lektor-card");
+    const detail = card.querySelector(".lektor-detail");
+    el.style.display = "none";
+    detail.style.display = "block";
+  }
+
+  function hideDetail(button) {
+    const card = button.closest(".lektor-card");
+    const thumb = card.querySelector(".lektor-thumbnail");
+    const detail = card.querySelector(".lektor-detail");
+    detail.style.display = "none";
+    thumb.style.display = "inline-block";
+  }
+</script>
